@@ -1,22 +1,26 @@
 class Github {
   constructor() {
-    this.client_id = '95b6e5721b498b9fafd8';
-    this.client_secret = 'aaaf73a3af6b382eb0aec508f1d85aa3b76cf64c';
+    this.client_id = "95b6e5721b498b9fafd8";
+    this.client_secret = "aaaf73a3af6b382eb0aec508f1d85aa3b76cf64c";
     this.repos_count = 5;
-    this.repos_sort = 'created: asc';
+    this.repos_sort = "created: asc";
   }
 
   async getUser(user) {
-    const profileResponse = await fetch(`https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`);
+    const profileResponse = await fetch(
+      `https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`
+    );
 
-    const repoResponse = await fetch(`https://api.github.com/users/${user}/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`);
+    const repoResponse = await fetch(
+      `https://api.github.com/users/${user}/repos?per_page=${this.repos_count}&sort=${this.repos_sort}&client_id=${this.client_id}&client_secret=${this.client_secret}`
+    );
 
     const profile = await profileResponse.json();
     const repos = await repoResponse.json();
 
     return {
       profile,
-      repos
-    }
+      repos,
+    };
   }
 }

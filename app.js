@@ -30,6 +30,4 @@ searchUser.addEventListener('keyup', (e) => {
     // Clear Profile
     ui.clearProfile();
   }
-
-
 });
